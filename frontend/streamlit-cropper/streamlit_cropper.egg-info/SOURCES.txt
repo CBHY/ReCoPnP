@@ -1,0 +1,11 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+streamlit_cropper/__init__.py
+streamlit_cropper.egg-info/PKG-INFO
+streamlit_cropper.egg-info/SOURCES.txt
+streamlit_cropper.egg-info/dependency_links.txt
+streamlit_cropper.egg-info/requires.txt
+streamlit_cropper.egg-info/top_level.txt

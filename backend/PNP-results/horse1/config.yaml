@@ -1,0 +1,12 @@
+device: cuda
+guidance_scale: 7.5
+image_path: data/horse.jpg
+latents_path: latents_forward
+n_timesteps: 50
+negative_prompt: ugly, blurry, black, low res, unrealistic
+output_path: PNP-results/horse1
+pnp_attn_t: 0.5
+pnp_f_t: 0.8
+prompt: a photo of a origami horse on the forest
+sd_version: '2.1'
+seed: 1

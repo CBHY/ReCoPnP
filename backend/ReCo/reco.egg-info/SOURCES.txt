@@ -1,0 +1,9 @@
+LICENSE
+NOTICE.txt
+README.md
+setup.py
+reco.egg-info/PKG-INFO
+reco.egg-info/SOURCES.txt
+reco.egg-info/dependency_links.txt
+reco.egg-info/requires.txt
+reco.egg-info/top_level.txt

@@ -1,0 +1,4 @@
+nbconvert
+diffusers==0.17.1
+xformers==0.0.20
+accelerate==0.20.3
