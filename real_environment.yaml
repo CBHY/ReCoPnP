@@ -1,4 +1,4 @@
-name: hkt3
+name: ReCoPnP
 channels:
   - pytorch
   - nvidia
@@ -239,4 +239,5 @@ dependencies:
       - xxhash==3.4.1
       - yarl==1.9.3
       - zipp==3.17.0
-prefix: /home/cvlserver/anaconda3/envs/hkt3
+prefix: 콘다 환경 경로에 맞게 설정
+# 예시 : 'prefix: /home/cvlserver/anaconda3/envs/hkt3'
