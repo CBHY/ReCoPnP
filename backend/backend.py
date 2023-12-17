@@ -1,7 +1,8 @@
 import os
 import sys
-sys.path.append('/home/cvlserver/ssd2tb/hkt/backend/ReCo/')
-sys.path.append('/home/cvlserver/ssd2tb/hkt/pnp-diffusers')
+root = f'/home/cvlserver/ssd2tb/hkt/'
+sys.path.append(f'{root}backend/ReCo/')
+sys.path.append(f'{root}pnp-diffusers')
 import uuid
 import torch
 from fastapi import FastAPI, File, UploadFile
@@ -248,10 +249,10 @@ async def image_gen(arg: Arguments):
                                     # Image.fromarray(x_sample.astype(np.uint8)).save(
                                     #     os.path.join(sample_path, f"{base_count:05}.jpg"))
                                     repeat=0
-                                    while os.path.isfile(os.path.join('/home/cvlserver/ssd2tb/hkt/backend/ReCo/'+outpath, "test_%d.png"%(repeat))):
+                                    while os.path.isfile(os.path.join(f'{root}backend/ReCo/'+outpath, "test_%d.png"%(repeat))):
                                         repeat+=1
                                     pred_image = Image.fromarray(x_sample.astype(np.uint8))
-                                    res_image_path = os.path.join('/home/cvlserver/ssd2tb/hkt/backend/ReCo/'+outpath, "test_%d.png"%(repeat))
+                                    res_image_path = os.path.join(f'{root}backend/ReCo/'+outpath, "test_%d.png"%(repeat))
                                     pred_image.save(res_image_path)
                                     res_image_path_list.append(res_image_path)
 
@@ -268,7 +269,7 @@ async def image_gen(arg: Arguments):
                                 if left>=right or top>=bottom:
                                     continue
                                 draw.rectangle(((left, top), (right, bottom)), fill=None, outline=(184,134,11), width=int(8*512/500))
-                            pred_image.save(os.path.join('/home/cvlserver/ssd2tb/hkt/backend/ReCo/'+outpath, "bbox/test_%d.png"%(repeat)))
+                            pred_image.save(os.path.join(f'{root}backend/ReCo/'+outpath, "bbox/test_%d.png"%(repeat)))
 
 
 
@@ -288,7 +289,7 @@ import pnp_diffusers.pnp as PNP_
 
 
 class Arguments_pre(BaseModel):
-    data_path: str = "/home/cvlserver/ssd2tb/hkt/backend/ReCo/outputs/test_0.png"
+    data_path: str = f"{root}backend/ReCo/outputs/test_0.png"
 
 
 @app.post("/style_gen")
@@ -313,8 +314,8 @@ import yaml
 
 class Arguments_pnp(BaseModel):
     prompt:str = "a photo of a colorful lego horse on the forest"
-    image_path:str = "/home/cvlserver/ssd2tb/hkt/backend/ReCo/outputs/test_0.png"
-    output_path:str = "/home/cvlserver/ssd2tb/hkt/backend/pnp_diffusers/PNP-results/final_result"
+    image_path:str = f"{root}backend/ReCo/outputs/test_0.png"
+    output_path:str = f"{root}backend/pnp_diffusers/PNP-results/final_result"
     negative_prompt:str = "ugly, blurry, black, low res, unrealistic"
 
 

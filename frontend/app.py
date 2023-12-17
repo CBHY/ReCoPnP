@@ -4,10 +4,15 @@ import io
 import streamlit as st
 from streamlit_cropper import st_cropper
 from PIL import Image, ImageEnhance
+import os
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
+print(os.getcwd())
+
+root = '/home/cvlserver/ssd2tb/hkt/'
+
 # Upload an image and set some options for demo purposes
-st.header("CloseCV: Text-to-Image Generation with Art")
+st.header("Text-to-Image Generation with Art 2023")
 img_file = st.sidebar.file_uploader(label='Upload a file', type=['png', 'jpg'])
 realtime_update = st.sidebar.checkbox(label="Update in Real Time", value=True)
 # box_color = st.sidebar.color_picker(label="Box Color", value='#0000FF')
@@ -50,7 +55,8 @@ if img_file:
 	print(temp_prompt)
 	temp_prompt = st.text_input('prompt_example',temp_prompt)
 	# Manipulate cropped image at will
-	
+	style_prompt = st.text_input('style_prompt_example','a photo of a cartoon cat on the concert field.')
+	negative_prompt = st.text_input('negative_prompt_example','ugly, blurry, low res')
 	
 	if st.button('submit'):
 
@@ -84,8 +90,7 @@ if img_file:
 		}
 		response = requests.post(url, json=temp_json_1)
 
-		style_prompt = st.text_input('style_prompt_example','a photo of a cartoon cat on the concert field.')
-		negative_prompt = st.text_input('negative_prompt_example','ugly, blurry, low res')
+
 		url2 =  "http://127.0.0.1:8000/style_gen"
 		data_path = response.json()['res_image_path']
 			
@@ -99,7 +104,7 @@ if img_file:
 		temp_json_3 = {
 		    'prompt': style_prompt,
 		    'image_path': response.json()['res_image_path'],
-		    'output_path':"/home/cvlserver/ssd2tb/hkt/backend/pnp_diffusers/PNP-results/final_result",
+		    'output_path':f"{root}backend/pnp_diffusers/PNP-results/final_result",
 		    'negative_prompt': negative_prompt,
 		}
 		response3 = requests.post(url3,json=temp_json_3)
